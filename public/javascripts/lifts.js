@@ -1,51 +1,57 @@
+/* eslint-disable */
+
 let muscleGroups = {
-    "arms": [
-        "Biceps",
-        "Triceps"
+    'arms': [
+        'Biceps',
+        'Triceps'
     ],
-    "chest": [
-        "Chest"
+    'chest': [
+        'Chest'
     ],
-    "legs": [
-        "Calves",
-        "Hamstrings",
-        "Quadriceps"
+    'legs': [
+        'Calves',
+        'Hamstrings',
+        'Quadriceps'
     ],
-    "lowerBack": [
-        "Lowerback"
+    'lowerBack': [
+        'Lowerback'
     ],
-    "shoulders": [
-        "Back Deltoid",
-        "Front Deltoid",
-        "Side Deltoid"
+    'shoulders': [
+        'Back Deltoid',
+        'Front Deltoid',
+        'Side Deltoid'
     ],
-    "upperBack": [
-        "Lats",
-        "Traps"
+    'upperBack': [
+        'Lats',
+        'Traps'
     ]
 };
 
 $(document).ready(function() {
-    $('#bodyPart').on('change', function() {
-        let bodyPart = $('#bodyPart').val();
+    let bodyPartInput = $('#bodyPart');
+    let primaryMuscleGroupInput = $('#primaryMuscleGroup');
+    let liftNameInput = $('#liftName');
+
+    bodyPartInput.on('change', function() {
+        let bodyPart = bodyPartInput.val();
         let muscles = muscleGroups[bodyPart];
-        $('#primaryMuscleGroup').children('option:not(:first)').remove();
-        $('#primaryMuscleGroup').prop('disabled', false);
+        primaryMuscleGroupInput.children('option:not(:first)').remove();
+        primaryMuscleGroupInput.prop('disabled', false);
 
         muscles.forEach(function(muscle) {
-            $('#primaryMuscleGroup').append($('<option>', { value : muscle }).text(muscle.charAt(0).toUpperCase() + muscle.slice(1)));
+            primaryMuscleGroupInput.append($('<option>', { value : muscle }).text(muscle.charAt(0).toUpperCase() + muscle.slice(1)));
         });
 
-        $('#bodyPart').removeClass('is-invalid');
+        bodyPartInput.removeClass('is-invalid');
     });
 
-    $('#primaryMuscleGroup').on('change', function() {
-        $('#primaryMuscleGroup').removeClass('is-invalid');
+    primaryMuscleGroupInput.on('change', function() {
+        primaryMuscleGroupInput.removeClass('is-invalid');
     });
 
-    $('#liftName').keyup(function() {
-        if ($('#liftName').val() !== '') {
-            $('#liftName').removeClass('is-invalid');
+    liftNameInput.keyup(function() {
+        if (liftNameInput.val() !== '') {
+            liftNameInput.removeClass('is-invalid');
         }
     });
 
@@ -54,20 +60,22 @@ $(document).ready(function() {
 
 function hasErrors() {
     let errors;
+    let liftNameInput = $('#liftName');
+    let bodyPartInput = $('#bodyPart');
+    let primaryMuscleGroupInput = $('#primaryMuscleGroup');
 
-    if ($('#liftName').val() === '') {
-        $('#liftName').addClass('is-invalid');
+    if (liftNameInput.val() === '') {
+        liftNameInput.addClass('is-invalid');
         errors = 1;
     }
 
-    if ($('#bodyPart').val() === '' || !$('#bodyPart').val()) {
-        console.log("empty");
-        $('#bodyPart').addClass('is-invalid');
+    if (bodyPartInput.val() === '' || !bodyPartInput.val()) {
+        bodyPartInput.addClass('is-invalid');
         errors = 1;
     }
 
-    if ($('#primaryMuscleGroup').val() === '' || !$('#primaryMuscleGroup').val()) {
-        $('#primaryMuscleGroup').addClass('is-invalid');
+    if (primaryMuscleGroupInput.val() === '' || !primaryMuscleGroupInput.val()) {
+        primaryMuscleGroupInput.addClass('is-invalid');
         errors = 1;
     }
 
