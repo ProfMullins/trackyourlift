@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./partials/head %>
+</head>
+<body>
+<header>
+    <% include ./partials/header %>
+</header>
+<main class="container">
+    <h1>Lifts</h1>
+    <p>Welcome to TrackYourLift</p>
+    <% if (lifts) { %>
+        <ul>
+        <% for (let i = 0; i < lifts.length; i++) { %>
+            <li><%= lifts[i].name %></li>
+        <% } %>
+        </ul>
+    <% } else { %>
+        <h2>No Lifts Found</h2>
+    <% } %>
+</main>
+<footer>
+    <% include ./partials/footer %>
+</footer>
+</body>
+<% include ./partials/script %>
+</html>
+

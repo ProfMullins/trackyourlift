@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <% include ./partials/head %>
+</head>
+<body>
+<header>
+    <% include ./partials/header %>
+</header>
+<main class="container">
+    <h1>Lifts</h1>
+    <p>Welcome to TrackYourLift</p>
+    <form class="needs-validation" id="liftForm" action="/lifts/create" method="post" novalidate>
+        <div class="form-group">
+            <label for="liftName">Lift Name</label>
+            <input type="text" name="liftName" class="form-control" id="liftName" placeholder="Enter Lift Name" required>
+            <div class="invalid-feedback">
+                Please Enter a Lift Name.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bodyPart">Select Primary Muscle Group</label>
+            <select class="form-control" id="bodyPart" name="bodyPart" required>
+                <option selected disabled>Select One</option>
+                <option value="arms">Arms</option>
+                <option value="chest">Chest</option>
+                <option value="legs">Legs</option>
+                <option value="lowerBack">Lower Back</option>
+                <option value="shoulders">Shoulders</option>
+                <option value="upperBack">Upper Back</option>
+            </select>
+            <div class="invalid-feedback">
+                Please Select a Body Part.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="primaryMuscleGroup">Select Primary Muscle Group</label>
+            <select class="form-control" id="primaryMuscleGroup" name="primaryMuscleGroup" required disabled>
+                <option selected disabled>Select One</option>
+            </select>
+            <div class="invalid-feedback">
+                Please Select a Muscle.
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" id="liftFormSubmitBtn">Submit</button>
+        </div>
+    </form>
+</main>
+<footer>
+    <% include ./partials/footer %>
+</footer>
+</body>
+<% include ./partials/script %>
+</html>
+
